@@ -1,5 +1,4 @@
 import * as Type from '../const/index';
-const id = require('uuid/v4');
 const dataProducts = JSON.parse(localStorage.getItem('products'));
 const products = dataProducts ? dataProducts : [];
 

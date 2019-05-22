@@ -1,17 +1,34 @@
 import React, { Component } from 'react';
-
+import CustomMenuLink from '../util/util';
+const menu = [
+    {
+        label: "Home",
+        to: "/",
+        exact: true
+    },
+    {
+        label: "Cart",
+        to: '/cart',
+        exact: false
+    }
+];
 class Sidebar extends Component {
     render() {
+        const elm = menu.map((link, index) => {
+            return (
+                <CustomMenuLink 
+                    key = {index}
+                    activeOnlyWhenExact = {link.exact}
+                    to = {link.to}
+                    label = {link.label}
+                />
+            );
+        });
         return (
             <div className="bg-light border-right" id="sidebar-wrapper">
                 <div className="sidebar-heading">Start Bootstrap </div>
                 <div className="list-group list-group-flush">
-                    <a href="#" className="list-group-item list-group-item-action bg-light">Dashboard</a>
-                    <a href="#" className="list-group-item list-group-item-action bg-light">Shortcuts</a>
-                    <a href="#" className="list-group-item list-group-item-action bg-light">Overview</a>
-                    <a href="#" className="list-group-item list-group-item-action bg-light">Events</a>
-                    <a href="#" className="list-group-item list-group-item-action bg-light">Profile</a>
-                    <a href="#" className="list-group-item list-group-item-action bg-light">Status</a>
+                    {elm}
                 </div>
             </div>
         );
